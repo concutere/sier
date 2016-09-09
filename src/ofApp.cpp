@@ -19,8 +19,10 @@ void ofApp::setup(){
 	ofBackground(0, 0, 0);
 	ofSetFrameRate(60);
 
-	factor = .25;
-	spin = .55;
+	//factor = .25; //-0.143
+	//spin = .55; //-0.527;
+	spin = -.527;
+	factor = -.143;
 	xo = yo = 0;
 	rr = r = 0;
 
@@ -66,7 +68,7 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
 	r = r + spin;
-	rr = sin(ofDegToRad(r));// fmod(r, 720)));
+	rr = (ofDegToRad(r));// fmod(r, 720)));
 	xo = yo = (sin(rr));
 
 
@@ -201,12 +203,17 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-	const bool mouseUpdates = true;
+	const bool mouseUpdates = false;
 	if (mouseUpdates)
 	{
 		spin = (spin + 1-2*(float)x / ofGetWidth()) / 2;
 		factor = (factor + 1-2*(float)(ofGetHeight() - y) / ofGetHeight()) / 2;
 	}
+	/*else
+	{
+		spin = -.527;
+		factor = -.143;
+	}*/
 }
 
 //--------------------------------------------------------------
